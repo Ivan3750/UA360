@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UA360 - Погода</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">   
+    <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&family=Nunito+Sans:opsz,wght@6..12,300&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="../img/logo.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/7c8801c017.js" crossorigin="anonymous"></script>
+    <link href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" rel="stylesheet"/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="weather.css">
+    <link rel="stylesheet" href="../load.css">
+
+</head>
+<body>
+    <div class="mask">
+        <div class="loader">
+            <div class="sky"></div>
+            <div class="sun"></div>
+        </div>
+    </div>
+    <header class="i-header__block">
+        <div class="i-header__block-body">
+            <a href="./weather.html">
+
+                <img class="i-header__logo" src="../img/logo.png" alt="" width="70px">
+            </a>
+            <nav class="i-header__nav">
+                <a href="../index.html" class="i-header-link">
+                    <img class="i-header__nav-link" width="50" height="50" src="https://img.icons8.com/3d-fluency/50/home.png" alt="home"/>
+
+                </a>
+                <a href="../D__news/Danya.html" class="i-header-link">
+                    <img class="i-header__nav-link" width="50" height="50" src="https://img.icons8.com/3d-fluency/50/news.png" alt="news"/>
+
+                </a>
+                <a href="../sport/index.html" class="i-header-link">
+
+                    <img class="i-header__nav-link"  width="50" height="50" src="https://img.icons8.com/3d-fluency/50/dumbbell.png" alt="dumbbell"/>
+                </a>
+                <a href="../Ivan Kohan/weather.html" class="i-header-link">
+                    
+                    <img class="i-header__nav-link"  width="50" height="50" src="https://img.icons8.com/3d-fluency/50/storm.png" alt="storm"/>
+                </a>
+                <a href="../weather/index.html" class="i-header-link">
+
+                    <img class="i-header__nav-link"  width="50" height="50" src="https://img.icons8.com/3d-fluency/50/slightly-smiling-face-icon.png" alt="slightly-smiling-face-icon"/> 
+                </a>
+            </nav>
+            <a href="../login/login.html" class="login-link">
+
+                <button class="login-btn">
+                    Вхід
+                </button>
+            </a>
+        </div>
+        <!--         <video src="./video/background.mp4" class="video-header" autoplay muted preload="auto" loop="loop" ></video>
+        -->        <div class="info-block">
+     <a href="../login/login.html" class="login-link">
+
+         <button class="login-btn-mobil">
+             Вхід
+         </button>
+     </a>
+            <div class="info-weather">
+                <p class="info-city" id="displayedCity">Київ, Незламна Україна</p>
+                <p class="info-dato">10 вересня 2023</p>
+                <p class="info-temperature"></p>
+                <div class="block-city">
+                    <div class="box-city-info">
+                        <!-- <input class="input__city" type="text" name="" id="" placeholder="Черкаси" >
+                            <button class="button-search">
+                            <img   src="https://cdn-icons-png.flaticon.com/512/751/751463.png" alt="" class="search" width="50px">
+                        </button> -->
+                        <div class="search-box">
+                            <button  class="FindMy_btn" style="position: relative;">
+                                <i class="fa-solid fa-location-dot" style="left: 14px; top: 14px;"></i>
+                            </button>
+                            <input class="input__city" type="text" placeholder="Введіть місто "  id="cityInput">
+                            <button class="fa-solid fa-magnifying-glass button-search" onclick="displayCity()"></button>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+       
+    </header>
+    
+<main class="main">
+<!--     <img src="https://www.pngkey.com/png/full/936-9363326_banner-wave-monochrome.png" alt="" class="wave">
+    <img src="./images/casual-life-3d-young-man-standing-with-hands-in-pockets.png" alt="" class="people"> -->
+
+<!--     <div class="weather-block">
+    <h3 class="weather-title">
+        Погода на 3 дні
+    </h3>
+</div> -->
+<div class="weather-block">
+        <div class="weather-lft">
+            <div class="weather-box">
+                <p class="weather-txt">
+                    Now
+                </p>
+                <div class="weather-status">
+                    <p class="weather-temperature">20°<span class="c-temperature"></span></p>
+                    <img src="./images/cloud.png" alt="" class="weather-img">
+                </div>
+                <p class="weather-status-txt">Хмарно</p>
+                <div class="weather-day">
+                    <img src="./images/icons8-calendar-48.png" alt="" class="w-dato-img">
+                    <p class="w-dato-txt">Понеділок 3 вересня</p>
+                </div>
+                <div class="weather-location">
+                    <img src="./images/icons8-map-pin-48.png" alt="" class="w-location-img" >
+                    <p class="w-location-txt">Київ Україна</p>
+                </div>
+            </div>
+        </div>
+        <div class="weather-rgt">
+            <div class="weather-info-box">
+                <h3 class="title-box">Todays highlights </h3>
+                <div class="weather-box-top">
+                    <div class="weather-air-box">
+                        <h3 class="air-title">Вітер</h3>
+                        <div class="w-air-info-container">
+                            <img src="./images/icons8-air-50.png" alt="" class="w-air-img">
+                            <div class="w-air-info-box">
+                                <p class="w-air-title">Швидкість</p>
+                                <p class="w-air speed">3.90</p>
+                            </div>
+                            <div class="w-air-info-box">
+                                <p class="w-air-title">Напрямок</p>
+                                <p class="w-air deg">7.75</p>
+                            </div>
+                            <div class="w-air-info-box">
+                                <p class="w-air-title">Порив</p>
+                                <p class="w-air gust">33.6</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="weather-sun-box">
+                        <h3 class="w-sun-title">Тривалість дня
+                        </h3>
+                        <div class="w-sun-container">
+                                <img src="./images/icons8-sun-100.png" alt="" class="w-sun">
+                                <div class="w-sun-box">
+                                    <p class="w-sun-text">Всіх</p>
+                                    <p class="sun-time">6:46</p>
+                                </div>
+                                <img src="./images/icons8-moon-100.png" alt="" class="w-moon">
+                                <div class="w-moon-box">
+                                    <p class="w-sun-text">Захід</p>
+                                    <p class="moon-time">17:39</p>
+                                </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="weather-box-bottom">
+                    <div class="weather-more-box">
+                        <h4 class="title-w-box">Вологість</h4>
+                        <div class="w-more-container">
+                            <img src="./images/icons8-humidity-100.png" alt="" class="w-icon">
+                            <p class="w-info-txt humidity">73%</p>
+                        </div>
+                    </div>
+                    <div class="weather-more-box">
+                        <h4 class="title-w-box">Тиск</h4>
+                        <div class="w-more-container">
+                            <img src="./images/icons8-pressure-100.png" alt="" class="w-icon">
+                            <p class="w-info-txt pressure">1019hPA</p>
+                        </div>
+                    </div>
+                    <div class="weather-more-box">
+                        <h4 class="title-w-box">Видимість</h4>
+                        <div class="w-more-container">
+                            <img src="./images/icons8-visibility-100.png" alt="" class="w-icon">
+                            <p class="w-info-txt visibility">2.5km</p>
+                        </div>
+                    </div>
+                    <div class="weather-more-box">
+                        <h4 class="title-w-box">Відчувається як</h4>
+                        <div class="w-more-container">
+                            <img src="./images/icons8-temperature-100.png" alt="" class="w-icon">
+                            <p class="w-info-txt feellike">20°</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ <!--    <div class="weather">
+     <div class="container">
+         
+         <div class="search-box">
+             <i class="fa-solid fa-location-dot"></i>
+             <input type="text" placeholder="Enter Your Location">
+             <button class="fa-solid fa-magnifying-glass"></button>
+            </div>
+            
+            <div class="not-found">
+                <img src="./images/404.png" alt="...">
+                <p>Oops! Invalid Location :/</p>
+            </div>
+            
+            <div class="weather-box">
+                <img src="" alt="...">
+                <p class="temperature"></p>
+                <p class="description"></p>
+            </div>
+            
+            <div class="weather-details">
+                <div class="humidity">
+                    <i class="fa-solid fa-water"></i>
+                    <div class="text">
+                        <span></span>
+                        <p>Humidity</p>
+                    </div>
+                </div>
+                <div class="wind">
+                    <i class="fa-solid fa-wind"></i>
+                    <div class="text">
+                        <span></span>
+                        <p>Wind Speed</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div> -->
+    <h3 class="country-title">Погода в різних країнах</h3>
+    <div class="country">
+        <a href="#" onclick="UKR_w()" class="country-link">
+            <div class="country-box">
+                <img src="./images/icons8-ukraine-100.png" alt="" class="country-img">
+                <p class="country-text">Україна</p>
+            </div>
+        </a>
+        <a href="#" class="country-link">
+            <div class="country-box">
+                <img src="./images/icons8-denmark-100.png" alt="" class="country-img">
+                <p class="country-text">Данія</p>
+            </div>
+        </a>
+        <a href="#" class="country-link">
+            <div class="country-box">
+                <img src="./images/icons8-poland-100.png" alt="" class="country-img">
+                <p class="country-text">Польща</p>
+            </div>
+        </a>
+        <a href="#" class="country-link">
+            <div class="country-box">
+                <img src="./images/icons8-bosnia-and-herzegovina-100.png" alt="" class="country-img">
+                <p class="country-text">Боснія</p>
+            </div>
+        </a>
+        <a href="#" class="country-link">
+            <div class="country-box">
+                <img src="./images/icons8-israel-100.png" alt="" class="country-img">
+                <p class="country-text">Ізраїль</p>
+            </div>
+        </a>
+        <a href="#" class="country-link">
+            <div class="country-box">
+                <img src="./images/icons8-germany-100.png" alt="" class="country-img">
+                <p class="country-text">Німечинна</p>
+            </div>
+        </a>
+        <a href="#" class="country-link">
+            <div class="country-box">
+                <img src="./images/icons8-france-100.png" alt="" class="country-img">
+                <p class="country-text">Франція</p>
+            </div>
+        </a>
+        <a href="#" class="country-link">
+            <div class="country-box">
+                <img src="./images/icons8-italy-100.png" alt="" class="country-img">
+                <p class="country-text">Італія</p>
+            </div>
+        </a>
+        <a href="#" class="country-link">
+            <div class="country-box">
+                <img src="./images/icons8-norway-100.png" alt="" class="country-img">
+                <p class="country-text">Норвегія</p>
+            </div>
+        </a>
+        <a href="#" class="country-link">
+            <div class="country-box">
+                <img src="./images/icons8-ireland-100.png" alt="" class="country-img">
+                <p class="country-text">Ірландія</p>
+            </div>
+        </a>
+        <a href="#" class="country-link">
+            <div class="country-box">
+                <img src="./images/icons8-sweden-100.png" alt="" class="country-img">
+                <p class="country-text">Швеція</p>
+            </div>
+        </a>
+        <a href="#" class="country-link">
+            <div class="country-box">
+                <img src="./images/icons8-spain-100.png" alt="" class="country-img">
+                <p class="country-text">Іспанія</p>
+            </div>
+        </a>
+        <button onclick="more()" class="country-link">
+            <div class="country-box" id="">
+                <img src="./images/3d-fluency-more.png" alt="" class="country-img">
+                <p class="country-text">Більше</p>
+            </div>
+        </button>
+        
+    </div>
+    <div class="info-country__block">
+        <h3 class="card-box-title">Топ країни</h3>
+        <div class="card-box">
+            <div class="card">
+                <img src="https://a.cdn-hotels.com/gdcs/production134/d1395/012f8bf8-1e3f-4bca-8939-d3c1ba6477e6.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Flag_of_Bosnia_and_Herzegovina.svg/1200px-Flag_of_Bosnia_and_Herzegovina.svg.png" alt="" class="card-img">
+                  <h5 class="card-title">Боснія та Герцеговина</h5>
+                  <p class="card-text">Країна в Південній Європі з багатою історією та культурним розмаїттям. Спільно з Сербією і Чорногорією, складає Федерацію Боснії і Герцеговини.</p>
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Читати більше
+                  </button>            </div>
+              </div>
+    
+              <!--  -->
+              <!-- Button trigger modal -->
+    
+      
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Боснія та Герцеговина</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-box">
+                    <div class="modal-left">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Flag_map_of_Bosnia_and_Herzegovina.svg" alt="" class="modal-img" width="50px">
+                    </div>
+                    <div class="modal-right">
+                        <p class="modal-text">
+                            Боснія і Герцеговина — країна на Балканському півострові, оточена сушею з усіх боків, крім південного заходу, де країна має вузький вихід до Адріатичного моря. Межує з Хорватією на півночі та заході, Чорногорією на південному сході та Сербією на сході. Раніше ця країна була республікою Югославія
+                        </p>
+                       <div class="info-container">
+                        <div class="info-box">
+                            <img src="./images/icons8-city-block-100.png" alt="" class="info-icon">
+                            <p class="info-text">Сараєво</p>
+                        </div>
+                        <div class="info-box">
+                            <img src="./images/icons8-language-100.png" alt="" class="info-icon">
+                            <p class="info-text">Боснійська, хорватська, сербська</p>
+                        </div>
+                        <div class="info-box">
+                            <img src="./images/icons8-money-100.png" alt="" class="info-icon">
+                            <p class="info-text">Конвертована марка</p>
+                        </div>
+                        <div class="info-box">
+                            <img src="./images/icons8-area-100.png" alt="" class="info-icon">
+                            <p class="info-text">51,209 км²</p>
+                        </div>
+                        <div class="info-box">
+                            <img src="./images/icons8-population-100.png" alt="" class="info-icon">
+                            <p class="info-text">3.271 міліона</p>
+                        </div>
+                       </div>
+                    </div>
+                </div>
+                </div>
+          </div>
+        </div>
+      </div>
+                <!--  -->
+    
+              <div class="card" >
+                <img src="https://pbs.twimg.com/media/FgOkb29WIAAqjRU.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/800px-Flag_of_Ukraine.svg.png?20230624202942" alt="" class="card-img">
+    
+                  <h5 class="card-title">Україна</h5>
+                  <p class="card-text">Найбільша країна в Східній Європі, відома своєю багатою історією, великими містами та розмаїттям природних ландшафтів.</p>
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Ukraine">
+                    Читати більше
+                  </button>             </div>
+              </div>
+    
+              <div class="modal fade" id="Ukraine" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">Україна</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-box">
+                            <div class="modal-left">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Outline_of_Ukraine.svg/1024px-Outline_of_Ukraine.svg.png" alt="" class="modal-img" width="50px">
+                            </div>
+                            <div class="modal-right">
+                                <p class="modal-text">
+                                    Україна – держава в Східній Європі. Межує на сході з Росією, на північному заході з Білоруссю, на заході з Польщею, Угорщиною та Словаччиною, на південному заході з Румунією та Молдовою, на півдні та південному сході омивається Чорним і Азовським морями відповідно.
+                                </p>
+                               <div class="info-container">
+                                <div class="info-box">
+                                    <img src="./images/icons8-city-block-100.png" alt="" class="info-icon">
+                                    <p class="info-text">Київ</p>
+                                </div>
+                                <div class="info-box">
+                                    <img src="./images/icons8-language-100.png" alt="" class="info-icon">
+                                    <p class="info-text">Українська</p>
+                                </div>
+                                <div class="info-box">
+                                    <img src="./images/icons8-money-100.png" alt="" class="info-icon">
+                                    <p class="info-text">Гривня</p>
+                                </div>
+                                <div class="info-box">
+                                    <img src="./images/icons8-area-100.png" alt="" class="info-icon">
+                                    <p class="info-text">603.628 км²</p>
+                                </div>
+                                <div class="info-box">
+                                    <img src="./images/icons8-population-100.png" alt="" class="info-icon">
+                                    <p class="info-text">43,79 міліона</p>
+                                </div>
+                               </div>
+                            </div>
+                        </div>
+                        </div>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="card" >
+                <img src="data:image/jpeg;base64,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" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <img src="https://www.norden.org/sites/default/files/styles/content_size_800/public/images/Dansk%2520flag383594.jpeg?itok=CNnL0vpT" alt="" class="card-img">
+    
+                  <h5 class="card-title">Данія</h5>
+                  <p class="card-text">Мала скандинавська країна, відома своєю високою якістю життя, інноваціями, та прекрасними природними пейзажами.</p>
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Danmark">
+                    Читати більше
+                  </button>             </div>
+              </div>
+    
+              <div class="modal fade" id="Danmark" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">Данія</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-box">
+                            <div class="modal-left">
+                                <img src="https://static.vecteezy.com/system/resources/previews/012/177/282/original/denmark-map-city-color-of-country-flag-png.png" alt="" class="modal-img" width="50px">
+                            </div>
+                            <div class="modal-right">
+                                <p class="modal-text">
+                                    Да́нія — скандинавська установча країна в Північній Європі, що входить до Королівства Данія. Розташована на південний захід від Швеції і на південь від Норвегії, має сухопутний кордон із Німеччиною.
+                                </p>
+                               <div class="info-container">
+                                <div class="info-box">
+                                    <img src="./images/icons8-city-block-100.png" alt="" class="info-icon">
+                                    <p class="info-text">Копенгаген</p>
+                                </div>
+                                <div class="info-box">
+                                    <img src="./images/icons8-language-100.png" alt="" class="info-icon">
+                                    <p class="info-text">Данська</p>
+                                </div>
+                                <div class="info-box">
+                                    <img src="./images/icons8-money-100.png" alt="" class="info-icon">
+                                    <p class="info-text">Данська крона</p>
+                                </div>
+                                <div class="info-box">
+                                    <img src="./images/icons8-area-100.png" alt="" class="info-icon">
+                                    <p class="info-text">42.952 км²</p>
+                                </div>
+                                <div class="info-box">
+                                    <img src="./images/icons8-population-100.png" alt="" class="info-icon">
+                                    <p class="info-text">5,857 міліона</p>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+<div class="map-block" style=" padding: 50px 0px;">
+
+    <div class="map-box" style="position: relative; height: 100vh;">
+
+        <ul style="text-align:center; position: absolute;top: 0; left: 0; right: 0; height: 50px;">
+            <li id="li"><input type="radio" name="kind" checked="checked" onchange="setKind('radar')">Radar (Past + Future) <input type="radio" name="kind" onchange="setKind('satellite')">Infrared Satellite</li>
+            
+        <li id="li"><input type="button" onclick="stop(); showFrame(animationPosition - 1); return;" value="&lt;" /></li>
+        <li id="li"><input type="button" onclick="playStop();" value="Play / Stop" /></li>
+        <li id="li"><input type="button" onclick="stop(); showFrame(animationPosition + 1); return;" value="&gt;" /></li>
+    
+        <li id="li"><select id="colors" onchange="setColors(); return;">
+            <option value="0">Black and White Values</option>
+            <option value="1">Original</option>
+            <option value="2" selected="selected">Universal Blue</option>
+            <option value="3">TITAN</option>
+            <option value="4">The Weather Channel</option>
+            <option value="5">Meteored</option>
+            <option value="6">NEXRAD Level-III</option>
+            <option value="7">RAINBOW @ SELEX-SI</option>
+            <option value="8">Dark Sky</option>
+        </select></li>
+    </ul>
+    
+    <div id="timestamp" style="text-align:center; position: absolute;top: 50px; left: 0; right: 0; height: 80px;">FRAME TIME</div>
+    
+<!--     <div id="mapid" style="position: absolute; top: 90px; left: 0; bottom: 0; right: 0;"></div> -->
+    <div id="mapid"></div>
+    
+</div>
+</div>
+    
+
+  <!--   <div class="img-block">
+      <div class="img-title">Краса світу</div>
+      <div id="carouselExampleDark" class="carousel carousel-dark slide">
+          <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="10000">
+                    <img src="./images/bosnia-and-herzegovina.jpg" class="d-block w-100" alt="...">
+                    
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img src="./images/3285x2555_910865_[www.ArtFile.ru].jpg" class="d-block w-100" alt="...">
+                    
+                </div>
+                <div class="carousel-item">
+                    <img src="./images/352817-admin_1920x1200.jpg" class="d-block w-100" alt="...">
+                    
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <img src="./images/icons8-left-50.png" alt="" class="prev">
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <img src="./images/icons8-left-50.png" alt="" class="prev" style=" transform: rotate(180deg);">
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div> -->
+    <div class="img-block-1">
+        <div class="block-info-img">
+            <p class="info-img-title">Боснія та Герцеговина</p> 
+            <p class="info-img-capital">Сараєво</p>
+
+            <div class="weather-container">
+                <p class="weather-temperature temp" id="Bosnia" style="color: white; font-size: 150px;">20°<span class="c-temperature"></span></p>
+                <img src="./images/cloud.png" alt="" class="weather-img img-status" id="BosniaImg">
+<!--                 <p class="weather-status-txt">Хмарно</p>
+-->         </div>
+</div>
+</div>
+</div>
+<div class="img-block-2">
+        <div class="block-info-img">
+            <p class="info-img-title">Україна</p>  
+            <p class="info-img-capital">Київ</p>
+  
+            <div class="weather-container">
+                <p class="weather-temperature temp" id="UKR" style="color: white; font-size: 150px;">20°<span class="c-temperature"></span></p>
+                <img src="./images/cloud.png" alt="" class="weather-img img-status" id="UkraineImg">
+<!--                 <p class="weather-status-txt">Хмарно</p>
+-->                </div>
+</div>
+</div>
+<div class="img-block-3">
+        <div class="block-info-img">
+            <p class="info-img-title">Данія</p> 
+            <p class="info-img-capital">Копенгаген</p>
+   
+            <div class="weather-container">
+                <p class="weather-temperature temp" id="Denmark" style="color: white; font-size: 150px;">20°<span class="c-temperature"></span></p>
+                <img src="./images/cloud.png" alt="" class="weather-img img-status" id="DenmarkImg">
+<!--                 <p class="weather-status-txt">Хмарно</p>
+-->                </div>
+</div>
+</div>
+<div class="about-shop">
+        <h2 class="about-shop-title">Наші переваги</h2>
+        <div class="card-box-wi">
+            <div class="card-wi">
+                <img src="./images/casual-life-3d-target-and-dart.png" alt="" class="card-img-wi">
+                <h3 class="card-title-wi">Актуальність</h3>
+                <p class="card-text-wi">
+                    Ми надаємо користувачам актуальну інформацію про погодні умови в режимі реального часу, що дозволяє людям завжди бути в курсі змін у погоді.
+                </p>
+            </div>
+            <div class="card-wi">
+                <img src="./images/3d-business-black-wallet-with-money.png" alt="" class="card-img-wi">
+                <h3 class="card-title-wi">Безкоштовність</h3>
+                <p class="card-text-wi">
+                    Ми надаємо свою інформацію про погоду безкоштовно, що робить їх доступними для всіх.            </div>
+            <div class="card-wi">
+                <img src="./images/casual-life-3d-yellow-key-1.png" alt="" class="card-img-wi">
+                <h3 class="card-title-wi">Легкий доступ</h3>
+                <p class="card-text-wi">
+
+                    Погоду можна перевірити онлайн завжди з доступом до Інтернету, що робить веб-сайти легко доступними на мобільних та ПК.            </div>
+        </div>
+        </div>
+    <div class="contact-block">        
+        <div class="form-box">
+            <form class="form" id="form">
+                <label class="title-form">Залиш відгук</label>
+                <input type="text" name="name" placeholder="Ваше ім'я" class="name-form" id="name">
+                <input type="email" name="email" placeholder="Ваше пошта" class="email-form" id="email">
+                <div class="feadback-box">
+                <div class="feadback">
+                    <input type="radio" name="radio" id="r5" value="5" class="input-fb">
+                    <label for="r5" class="label-fb">
+                        <img src="./images/s (5).png" alt="" class="smile-icon">
+                    </label>
+                </div>
+                <div class="feadback">
+                    <input type="radio" name="radio" id="r4" value="4" class="input-fb">
+                    <label for="r4" class="label-fb">
+                        <img src="./images/s (4).png" alt="" class="smile-icon">
+                    </label>
+                </div>
+                <div class="feadback">
+                    <input type="radio" name="radio" id="r3" value="3" class="input-fb">
+                    <label for="r3" class="label-fb">
+                        <img src="./images/s (3).png" alt="" class="smile-icon">
+                    </label>
+                </div>
+                <div class="feadback">
+                    <input type="radio" name="radio" id="r2" value="2" class="input-fb">
+                    <label for="r2" class="label-fb">
+                        <img src="./images/s (2).png" alt="" class="smile-icon">
+                    </label>
+                </div>
+                <div class="feadback">
+                    <input type="radio" name="radio" id="r1" value="1" class="input-fb">
+                    <label for="r1" class="label-fb">
+                        <img src="./images/s (1).png" alt="" class="smile-icon">
+                    </label>
+                </div>
+                </div>
+                <button type="submit" class="btn-form">Надіслати</button>
+            </form>
+        </div>
+    </div>
+    <div class="error-box">
+       <p class="error">Цей сайт не підтримується вашим пристроєм</p>
+    </div>
+</main>
+<footer class="S">
+    <div class="s_footer">
+        <h2 class="s_footer__head"><span class="s_span">UA</span>360</h2>
+        <p class="s_footer__txt">Програма погоди, яка надає користувачам точну та актуальну інформацію про погоду.</p>
+        <div class="s_footer__list">
+            <a href="" class="s_footer__list-link">
+                <img src="../photo/s_item.png" alt="" class="s_footer__list-link-bg">
+            </a>
+            <a href="" class="s_footer__list-link">
+                <img src="../photo/s_facebook.png" alt="" class="s_footer__list-link-bg">
+            </a>
+            <a href="" class="s_footer__list-link">
+                <img src="../photo/s_instagram.png" alt="" class="s_footer__list-link-bg">
+            </a>
+            <a href="" class="s_footer__list-link">
+                <img src="../photo/s_twiter.png" alt="" class="s_footer__list-link-bg">
+            </a>
+        </div>
+        <p class="s_footer__law">&2023 WeatherUa, Усі права захищено.</p>
+    </div>
+</footer>
+<!-- <footer class="footer">
+    <div class="waves">
+        <div class="wave" id="wave1"></div>
+        <div class="wave" id="wave2"></div>
+        <div class="wave" id="wave3"></div>
+        <div class="wave" id="wave4"></div>
+    </div>
+    <ul class="social-icon">
+        <li class="social-icon__item"><a class="social-icon__link" href="#">
+            <ion-icon name="logo-facebook"></ion-icon>
+        </a></li>
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-twitter"></ion-icon>
+        </a></li>
+        <li class="social-icon__item"><a class="social-icon__link" href="#">
+            <ion-icon name="logo-linkedin"></ion-icon>
+        </a></li>
+        <li class="social-icon__item"><a class="social-icon__link" href="#">
+            <ion-icon name="logo-instagram"></ion-icon>
+        </a></li>
+    </ul>
+    <ul class="menu">
+        <li class="menu__item"><a class="menu__link" href="../index.html">Головна</a></li>
+        <li class="menu__item"><a class="menu__link" href="#">Новини</a></li>
+        <li class="menu__item"><a class="menu__link" href="#">Спорт</a></li>
+        <li class="menu__item"><a class="menu__link" href="#">Цікаві факти</a></li>
+        
+        
+    </ul>
+    <p>&copy;2023 UA360 | All Rights Reserved</p>
+</footer> -->
+
+<script src="./js/map.js"></script>
+<script src="./js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="../load.js"></script>
+</body>
+</html>
+

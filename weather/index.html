@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UA360 - Цікаві факти</title>
+    <link rel="shortcut icon" href="/img/logo.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital@1&family=Dancing+Script:wght@500&family=Noto+Serif:ital@1&family=Open+Sans:ital,wght@1,300&family=Pacifico&family=Raleway:wght@200&family=Roboto:wght@300&family=Shadows+Into+Light&family=Signika+Negative:wght@300&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="/load.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="mask">
+        <div class="loader">
+            <div class="sky"></div>
+            <div class="sun"></div>
+        </div>
+    </div>
+    <header class="i-header">
+        <div class="i-header__block">
+            <div class="i-header__block-body">
+                <img class="i-header__logo" src="/img/logo.png" alt="" width="70px">
+                
+                <nav class="i-header__nav">
+                    <a href="/index.html" class="i-header-link">
+                        <img class="i-header__nav-link" width="50" height="50" src="https://img.icons8.com/3d-fluency/50/home.png" alt="home"/>
+                    </a>
+                    <a href="/D__news/Danya.html" class="i-header-link">
+                        <img class="i-header__nav-link" width="50" height="50" src="https://img.icons8.com/3d-fluency/50/news.png" alt="news"/>
+                    </a>
+                    <a href="/sport/index.html" class="i-header-link">
+                        <img class="i-header__nav-link"  width="50" height="50" src="https://img.icons8.com/3d-fluency/50/dumbbell.png" alt="dumbbell"/>
+                    </a>
+                    <a href="/Ivan Kohan/weather.html" class="i-header-link">
+                        
+                        <img class="i-header__nav-link"  width="50" height="50" src="https://img.icons8.com/3d-fluency/50/storm.png" alt="storm"/>
+                    </a>
+                    <a href="./index.html" class="i-header-link">
+                        <img class="i-header__nav-link"  width="50" height="50" src="https://img.icons8.com/3d-fluency/50/slightly-smiling-face-icon.png" alt="slightly-smiling-face-icon"/> 
+                    </a>
+                </nav>
+                <a href="../login/login.html" class="login-link">
+
+                    <button class="login-btn">
+                        Вхід
+                    </button>
+                </a>
+            </div>
+           <!--  <nav class="i-header__nav">
+                <a href="" class="i-header__link">Головна</a>
+                <a href="" class="i-header__link">Новини</a>
+                <a href="" class="i-header__link">Спорт</a>
+                <a href="" class="i-header__link">Погода</a>
+                <a href="" class="i-header__link">Цікаві факти</a>
+            </nav> -->
+        </div>
+
+</header>
+
+
+
+    <div class="s_facts">
+        <div class="s_block">
+            <video playsinline autoplay muted class="s_block__video">
+                <source src="./photo/s_video_.mp4" type="video/mp4" class="s_block__video-source">
+            </video>
+            <div class="s_block__header">
+                <div class="s_block__t">
+                    <h3 class="s_block__title">Цікаві факти про погоду</h3>
+                    <p class="s_block__header-txt">Атмосферні умови нашої планети широко варіюються. Характеристики цих умов включають вологість, швидкість вітру, хмарний покрив, опади й температуру повітря. «Погода» — це загальний термін, який використовується для опису цих умов за короткий період часу.</p>
+                </div>
+                <div class="s_block__head-box">
+                    <img src="./photo/s_radar2.jpg" alt="error" class="s_block__header-img">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary s_block__header-modal" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Ваші факти
+                    </button>
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Ваш факт</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <input type="text" class="modal-input">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="s_block__main">
+                <div class="s_block__box">
+                    <img src="./photo/s_box2.jpg" alt="error" class="s_block__box-img">
+                    <p class="s_block__box-text">Одне із найбільш сонячних місць на планеті ​​це Мертве море. Тут приблизно 330 сонячних днів на рік! Синоптики тут із прогнозами особливо не паряться. Зате паряться відпочивальники. А ось найменше сонця на архіпелазі Північна Земля. Там сонце світить усього 12 днів на рік. </p>
+                </div>
+                <div class="s_block__box">
+                    <img src="./photo/s_thermometer.jpg" alt="error" class="s_block__box-img">
+                    <p class="s_block__box-text">У процесі спостереження за погодою з’явилися різні температурні шкали. Найбільшого поширення набула шкала Цельсія, де за 0 прийнята температура замерзання води. Однак у Північній Америці прижилася шкала Фаренгейта. Цікаво, що в одному значенні обидві шкали все-таки сходяться. Температура -40 за Цельсієм точно дорівнює температурі -40 за Фаренгейтом.</p>
+                </div>
+                <div class="s_block__box">
+                    <img src="./photo/s_newspaper.jpg" alt="error" class="s_block__box-img">
+                    <p class="s_block__box-text">У періодичній пресі перші передбачення погоди почали публікувати з 1861 року  англійська газета «Таймс» опублікувала прогноз, який склав офіцер флоту Роберт Фіц-Рой. Цікаво, що про температуру повітря в ньому не йшлося ні слова, було вказано лише напрямок «помірного вітру». А найперший прогноз погоди по телевізору змогли побачити також англійці — 1936 року. Радіопрогнози з’явилися в 1922 році. І знову в Англії. Ініціатором стала компанія ВВС.</p>
+                </div>
+            </div>
+        <div class="s_facts__anim">
+            <img src="./photo/s_cloud.png" alt="error" class="s_facts__cloud">
+        </div>
+    </div>
+
+
+    <div class="accordion" id="accordionPanelsStayOpenExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                    Ненудні факти
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+                <div class="accordion-body">
+                    <div id="carouselExample" class="carousel slide">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="s_facts__info-box">
+                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/SfmhrRrEk0A?si=1qexhkFIcPs-StTD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="s_facts__info-v"></iframe>
+                                    <p class="s_facts__info-txt">Усі циклони, що зародилися в північній півкулі, обертаються проти годинникової стрілки, у той час, як циклони, що зародилися в південній півкулі обертаються за годинниковою стрілкою. Це є прямим наслідком ефекту Коріоліса. Циклони ніколи не перетинають екватор, зазвичай вони народжуються поблизу екватора, а потім рухаються в напрямку до одного з полюсів.</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="s_facts__info-box">
+                                    <img src="./photo/s_cloud.png" alt="error" class="s_facts__info-img2">
+                                    <img src="./photo/s_frog.png" alt="error" class="s_facts__info-img3">
+                                    <p class="s_facts__info-txt">Дослідження в сучасному Китаї показали, що можна передбачати погоду з точністю до 80%, грунтуючись на квакання жаб. Селянин на ім’я Чанг Чи-цай розробив формулу, яку прийняли мільйони китайських – фермерів і селян: Якщо в гарну погоду кумкає жаба, то через два дня буде дощ. Якщо жаба кумкає після дощу, погода покращиться. Дощ не вщухне, якщо вона не кумкає після кількох похмурих днів.</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="s_facts__info-box">
+                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/0Goz0PnhEg8?si=iP8W6qrBZxUAv8ke" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="s_facts__info-v"></iframe>
+                                    <p class="s_facts__info-txt">Часто від диктора можна почути вислів: «очікується короткочасний дощ». А яка тривалість такого дощу? За заявами самих синоптиків, не більше ніж 3 години. А ось фраза «без істотних опадів» означає, що на один квадратний метр їх випаде не більше ніж 0,3 літра.<br><br class="s_facts__br">Грошова одиниця Ботсвани — пула, перекладається як «дощ». Також слово пула є привітанням на одній із мов цієї посушливої ​​країни.</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="s_facts__info-box">
+                                    <img src="./photo/s_change.gif" class="s_facts__info-img3">
+                                    <p class="s_facts__info-txt">У середніх широтах погода дуже мінлива. Вона може змінюватися щодня й по кілька разів на день. З цим добре знайомі в США. Свого часу Марк Твен сказав: <br>«Якщо вам не подобається погода в Новій Англії, зачекайте кілька хвилин».<br><br>Багаторічні метеозведення по Лондону незаперечно доводять, що по четвергах там випадає більше дощів, ніж в інші дні. Поки це не піддається поясненню.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                    Погода
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                    <div class="s_gallery">
+                        <img src="./photo/s_snowy.jpg" alt="error" class="s_gallery_img">
+                        <img src="./photo/s_rain.jpg" alt="error" class="s_gallery_img">
+                        <img src="./photo/s_sunset.jpg" alt="error" class="s_gallery_img">
+                    </div>
+                    <div class="s_gallery">
+                        <img src="./photo/s_night.jpg" alt="error" class="s_gallery_img">
+                        <img src="./photo/s_wind.jpg" alt="error" class="s_gallery_img">
+                        <img src="./photo/s_sun.jpg" alt="error" class="s_gallery_img">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                    Дивні місця
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                    <div class="s_block__main">
+                        <div class="s_block__box">
+                            <img src="./photo/s_thunder.jpg" alt="error" class="s_block__box-img">
+                            <p class="s_block__box-text">Жителі Уганди зовсім не бояться грому, оскільки в середньому гроза тут спостерігається 250 днів у році. Уганда є найбільш грозовим місцем планети.<br><br>Грози найчастіше трапляються в жаркому та вологому середовищі, ці тропічні шторми можуть початися швидко та завдати серйозної шкоди.</p>
+                        </div>
+                        <div class="s_block__box">
+                            <img src="./photo/s_valley.jpg" alt="error" class="s_block__box-img">
+                            <p class="s_block__box-text">Найсухіше місце на Землі аж ніяк не Сахара або інша відома пустеля, а регіон в Антарктиді під назвою «Сухі долини». Ці долини майже повністю вільні від льоду і снігу, оскільки волога випаровується під дією найпотужніших вітрів, що досягають швидкості 320 км/год. У деяких районах цього регіону дощів не було вже два мільйони років.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="s_end">
+        <img src="./photo/s_ancient.png" alt="error" class="s_end-img">
+        <div class="s_end__block">
+            <h2 class="s_end__block-head">Історія погоди</h2>
+            <ul class="s_end__block-list">
+                <li class="s_end__block-point">- Слово «метеорологія» (ст. грец. «міркування про небесні явища») пов'язане з працями Платона, Аристотеля, Плутарха, де воно зустрічається.</li>
+                <li class="s_end__block-point">- Наприклад, у Аристотеля у трактаті під назвою «Метеорологіка» описані небесні явища. Аристотель назвав свою працю, виходячи з грецького виразу "та метеора" - "небесні явища".</li>
+                <li class="s_end__block-point">- До них він зараховував дощі та комети, град та метеори, веселки та полярні сяйва.</li>
+                <li class="s_end__block-point">- Метеорологія як наука виникла після винаходу у XVII столітті термометра Галілео Галілеєм та барометра Отто фон Геріке.</li>
+                <li class="s_end__block-point">- У XVII столітті також були винайдені гігрометр, дощомір, флюгер та анемометр.</li>
+            </ul>
+        </div>
+    </div>
+
+
+
+
+    <footer class="S">
+        <div class="s_reg">
+            <h1 class="s_reg__head">Будьте в безпеці з оновленням погоди</h1>
+            <div class="s_reg__email">
+                <input type="email" placeholder="Your email" class="s_reg__email-input">
+                <img src="./photo/s_plane.png" alt="plane" class="s_reg__email-icon">
+            </div>
+        </div>
+        <div class="s_footer">
+            <h2 class="s_footer__head">360<span class="s_span">UA</span></h2>
+            <p class="s_footer__txt">Програма погоди, яка надає користувачам точну та актуальну інформацію про погоду.</p>
+            <div class="s_footer__list">
+                <a href="" class="s_footer__list-link">
+                    <img src="./photo/s_item.png" alt="" class="s_footer__list-link-bg">
+                </a>
+                <a href="" class="s_footer__list-link">
+                    <img src="./photo/s_facebook.png" alt="" class="s_footer__list-link-bg">
+                </a>
+                <a href="" class="s_footer__list-link">
+                    <img src="./photo/s_instagram.png" alt="" class="s_footer__list-link-bg">
+                </a>
+                <a href="" class="s_footer__list-link">
+                    <img src="./photo/s_twiter.png" alt="" class="s_footer__list-link-bg">
+                </a>
+            </div>
+            <p class="s_footer__law">&2023 WeatherUa, Усі права захищено.</p>
+        </div>
+    </footer>
+    <script src="/load.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>
