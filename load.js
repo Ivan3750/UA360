@@ -5,4 +5,4 @@ window.addEventListener('load', () => {
   setTimeout(() => {
     mask.remove();
   }, 600);
-})
+}) 

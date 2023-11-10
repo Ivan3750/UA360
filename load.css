@@ -32,6 +32,7 @@ body, html {
   .loader{
     position: relative;
     height: 150px;
+    width: 120px;
   }
 
   .sky {
