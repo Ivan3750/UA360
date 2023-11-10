@@ -2093,7 +2093,9 @@ width: 100%;
 .weather-rgt{
     display: none;
   }
-
+  .card{
+    max-width: 400px;
+  }
   .card-text{
     font-size: 14px;
   }

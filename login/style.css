@@ -128,7 +128,7 @@ body{
     display: flex;
     background-color: #0B131E;
     max-width: 100vw;
-    max-height: 100vh;
+    height: 100vh;
     overflow: hidden;
     margin: 0px auto;
     justify-content: center;
@@ -434,3 +434,82 @@ max-width: 195px;
       }
       .answer-text{
       }
+
+
+      @media (max-width: 767px) { 
+
+        .login-block{
+            height: 120vh;
+        }
+
+        .d-block.w-100{
+          object-fit: cover; 
+        }
+      
+      
+        .card-box-wi{
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .card-wi{
+          max-width: 600px;
+          height: 450px;
+          padding: 0px 15px;
+        }     
+        .card-text-wi{
+          font-size: 18px;
+        }
+        .card-img-wi{
+          height: 200px;
+        }
+        .card-title-wi{
+          font-size: 40px;
+        }
+      
+        .i-header__block-body{
+          position: fixed;
+          z-index: 1050;
+          bottom: 0px;
+          padding: 0px;
+          background-color: #06283D;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+      
+      } .i-header-nav{
+        padding: 0px 5px;
+        display: none;
+        margin: 0px auto;
+        width: 95%;
+      }
+      
+      .i-header__logo{
+        display: none;
+      }
+      
+      
+      .i-header__nav-link:hover{
+      transform: scale(1.1);
+      }
+      
+      .login-btn{
+      display: none;
+      }
+      .login-btn-mobil{
+      display: block;
+      border-radius: 20px;
+      background-color: #3586ff;
+      height: 50px;
+      width: 200px;
+      color: #06283D;
+      font-family: "Pitagon";
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      }
+      .i-header__nav{
+      width: 100%;
+      }
+      
+       }
+      

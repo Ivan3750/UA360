@@ -138,10 +138,10 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 200px;
+
 }
 .g__conteiner-box1 {
-   
+
 }
 .g__conteiner-box1-text {
     color: #FFF;
@@ -888,6 +888,7 @@ code {
     .g__text1,  .g__text2, .g__text3, .of {
         font-size: 40px;
         border: 0;
+        height: 50px;
     }
     .g__box-news1 {
         position: relative;
@@ -1196,7 +1197,10 @@ code {
 
       
 
-   
+      .g__conteiner-box1-text{
+        flex-wrap: wrap;
+        line-height: 0px;
+      }
 
   
   
@@ -1262,11 +1266,27 @@ code {
     }
   
 
+    .g__conteiner-box2-text{
+
+        font-size: 12px;
+        max-width: 320px;
+    }
+
+    .g__conteiner2-box-title{
+        font-size: 25px;
+        min-width: 270px;
+        max-width: 325px;
+    }
+    .g__conteiner2-box-information{
+        max-width: 250px;
+    }
+
+    .g__conteiner2-box{
+        min-width: 300px;
+    }
   }
 
   
-  
 
-  
   
   
