@@ -633,17 +633,17 @@
         <div class="form-box">
             <form class="form" id="form">
                 <label class="title-form">Залиш відгук</label>
-                <input type="text" name="name" placeholder="Ваше ім'я" class="name-form" id="name">
-                <input type="email" name="email" placeholder="Ваше пошта" class="email-form" id="email">
+                <input type="text" name="name" placeholder="Ваше ім'я" class="name-form" id="name" required>
+                <input type="email" name="email" placeholder="Ваше пошта" class="email-form" id="email" required>
                 <div class="feadback-box">
                 <div class="feadback">
-                    <input type="radio" name="radio" id="r5" value="5" class="input-fb">
+                    <input type="radio" name="radio" id="r5" value="5" class="input-fb" required>
                     <label for="r5" class="label-fb">
                         <img src="./images/s (5).png" alt="" class="smile-icon">
                     </label>
                 </div>
                 <div class="feadback">
-                    <input type="radio" name="radio" id="r4" value="4" class="input-fb">
+                    <input type="radio" name="radio" id="r4" value="4" class="input-fb" required>
                     <label for="r4" class="label-fb">
                         <img src="./images/s (4).png" alt="" class="smile-icon">
                     </label>
@@ -666,9 +666,19 @@
                         <img src="./images/s (1).png" alt="" class="smile-icon">
                     </label>
                 </div>
+                </div>  
+                <div class="feadback-text">
+                    <textarea name="feadback" id="feadback"  rows="10" placeholder = "Напишіть відгук" class="feadback-input-text" ></textarea>
                 </div>
                 <button type="submit" class="btn-form">Надіслати</button>
             </form>
+        </div>
+        <div class="answer-box">
+            <img src="./images/icons8-confirm-100.png" alt="Super!" class="answer-img">
+            <p class="answer">Відгук відправлено</p>
+            <button onclick="FeadbackAgain()" class="answer-button">Ще один відгук!</button>
+        </div>
+    </div>
         </div>
     </div>
     <div class="error-box">

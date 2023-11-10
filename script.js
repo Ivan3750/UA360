@@ -293,3 +293,28 @@ window.addEventListener('load', () => {
     mask.remove();
   }, 600);
 })
+
+
+
+const temperatureElement = document.querySelector('.i-temperature');
+
+function getWeatherForDefaultCity() {
+  const APIKey = '185dbcc57e27f9315a49d3f1c762ebd7';
+
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=Kyiv&units=metric&appid=${APIKey}`)
+      .then(response => response.json())
+      .then(data => {
+        if (data.cod === 200) {
+          const temperature = data.main.temp.toFixed(0);
+          temperatureElement.textContent = `${temperature}°`;
+        } else {
+          temperatureElement.textContent = '-';
+        }
+      })
+      .catch(error => {
+        console.error('Помилка запиту до API: ', error);
+      });
+    }
+    
+    getWeatherForDefaultCity();
+    

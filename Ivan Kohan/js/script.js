@@ -108,16 +108,20 @@ function getWeatherForDefaultCity() {
        const TOKEN = "6688250245:AAG6Xs9pKTnPwF7sPSPq3rvbqlC43Zty0Cg";
 		const CHAT_ID = "-1001713512717";
 		const URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
-		
+		const AnswerBox = document.querySelector('.answer-box');
+    const FormBox = document.querySelector('.form-box');
+
 
  
 document.getElementById("form").addEventListener("submit", function (e) { 
   e.preventDefault(); 
   console.log("yes"); 
+  AnswerBox.style.display = 'flex';
+  FormBox.style.display = 'none'
   let message = "<b>Відгук</b>\n"; 
   message += "<b>Відправник: </b>" + this.name.value + "\n"; 
   message += "<b>Електрона адреса: </b>" + this.email.value + "\n"; 
- 
+ message += "<b>Відгук: </b>" + this.feadback.value + "\n";
   const selectedRadio = document.querySelector('input[name="radio"]:checked'); 
   if (selectedRadio) { 
     message += "<b>Оцінка: </b>" + selectedRadio.value + "\n"; 
@@ -133,6 +137,19 @@ document.getElementById("form").addEventListener("submit", function (e) {
 });
 
 
+function FeadbackAgain(){
+
+  AnswerBox.style.display = 'none';
+  FormBox.style.display = 'block';
+}
+
+document.getElementById("form").addEventListener("submit", function (event) {
+  // Запобігання стандартної поведінки відправки форми
+  event.preventDefault();
+
+  // Очищення форми
+  this.reset();
+});
 
 
 
