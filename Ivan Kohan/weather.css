@@ -744,6 +744,7 @@ transform: scale(0.95);
   padding: 0px 10px;
 }
 .country-link {
+  background: transparent;
 }
 .country-box {
   display: flex;

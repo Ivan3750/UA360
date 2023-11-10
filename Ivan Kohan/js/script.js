@@ -272,7 +272,7 @@ search.addEventListener('click', () => {
         search.addEventListener('click', searchByCity);
         findMyButton.addEventListener('click', searchByLocation); // Додано обробник подій для кнопки FindMyButton
         
-        function searchByCity() {
+         function searchByCity() {
           const city = document.querySelector('.input__city').value;
           if (city === '') return;
           
@@ -280,7 +280,103 @@ search.addEventListener('click', () => {
           .then(response => response.json())
           .then(handleWeatherData)
           .catch(handleError);
+        } 
+
+
+        function UA() {          
+          fetch(`https://api.openweathermap.org/data/2.5/weather?q=kyiv&units=metric&appid=${APIKey}&lang=uk`)
+          .then(response => response.json())
+          .then(handleWeatherData)
         }
+
+        function DK() {          
+          fetch(`https://api.openweathermap.org/data/2.5/weather?q=copenhagen&units=metric&appid=${APIKey}&lang=uk`)
+          .then(response => response.json())
+          .then(handleWeatherData)
+        }
+        function PL() {          
+          fetch(`https://api.openweathermap.org/data/2.5/weather?q=warsawa&units=metric&appid=${APIKey}&lang=uk`)
+          .then(response => response.json())
+          .then(handleWeatherData)
+        }
+        function BA() {          
+          fetch(`https://api.openweathermap.org/data/2.5/weather?q=sarajevo&units=metric&appid=${APIKey}&lang=uk`)
+          .then(response => response.json())
+          .then(handleWeatherData)
+        }
+        function IS() {          
+          fetch(`https://api.openweathermap.org/data/2.5/weather?q=jerusalem&units=metric&appid=${APIKey}&lang=uk`)
+          .then(response => response.json())
+          .then(handleWeatherData)
+        }
+        function DE() {          
+          fetch(`https://api.openweathermap.org/data/2.5/weather?q=berlin&units=metric&appid=${APIKey}&lang=uk`)
+          .then(response => response.json())
+          .then(handleWeatherData)
+        }
+        function FR() {          
+          fetch(`https://api.openweathermap.org/data/2.5/weather?q=paris&units=metric&appid=${APIKey}&lang=uk`)
+          .then(response => response.json())
+          .then(handleWeatherData)
+        }
+        function IT() {          
+          fetch(`https://api.openweathermap.org/data/2.5/weather?q=rom&units=metric&appid=${APIKey}&lang=uk`)
+          .then(response => response.json())
+          .then(handleWeatherData)
+        }
+        function NR() {          
+          fetch(`https://api.openweathermap.org/data/2.5/weather?q=oslo&units=metric&appid=${APIKey}&lang=uk`)
+          .then(response => response.json())
+          .then(handleWeatherData)
+        }
+        function IR() {          
+          fetch(`https://api.openweathermap.org/data/2.5/weather?q=dublin&units=metric&appid=${APIKey}&lang=uk`)
+          .then(response => response.json())
+          .then(handleWeatherData)
+        }
+        function SE() {          
+          fetch(`https://api.openweathermap.org/data/2.5/weather?q=stockholm&units=metric&appid=${APIKey}&lang=uk`)
+          .then(response => response.json())
+          .then(handleWeatherData)
+        }
+        function SP() {          
+          fetch(`https://api.openweathermap.org/data/2.5/weather?q=madrid&units=metric&appid=${APIKey}&lang=uk`)
+          .then(response => response.json())
+          .then(handleWeatherData)
+        }
+
+
+
+
+
+        const loctext = document.querySelector(".w-location-txt")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
          function searchByLocation() {  
           if ("geolocation" in navigator) {
@@ -292,7 +388,8 @@ search.addEventListener('click', () => {
               .then(handleWeatherData)        .catch(handleError);
           }, function(error) {      console.error("Помилка геолокації: " + error.message);
             handleError(error);    });
-        } else {    alert("Геолокація не підтримується в цьому браузері.");
+        } else {    
+          alert("Геолокація не підтримується в цьому браузері.");
         }} 
        /*  function searchByLocation() {
           if ("geolocation" in navigator) {
@@ -320,7 +417,9 @@ search.addEventListener('click', () => {
             error404.classList.add('fadeIn');
           } else {
           
-
+            console.log("hello");
+            console.log(json);
+            weatherblock.style.display = "flex"
             const image = document.querySelector('.weather-box img');
             const temperature = document.querySelector('.weather-temperature');
             const description = document.querySelector('.weather-status-txt');
@@ -329,54 +428,55 @@ search.addEventListener('click', () => {
             const pressure = document.querySelector('.pressure');
             const visibility = document.querySelector('.visibility');
             const feellike = document.querySelector('.feellike');
-
+            
             const windSpeed = document.querySelector(`.speed`)
             const windDeg = document.querySelector(`.deg`)
             const windGust = document.querySelector(`.gust`)
-
-
+            
+            
             switch (json.weather[0].main) {
-                case 'Clear':
-                    image.src = 'images/clear.png';
-                    break;
-
+              case 'Clear':
+                image.src = 'images/clear.png';
+                break;
+                
                 case 'Rain':
-                    image.src = 'images/rain.png';
-                    break;
-
-                case 'Snow':
+                  image.src = 'images/rain.png';
+                  break;
+                  
+                  case 'Snow':
                     image.src = 'images/snow.png';
                     break;
-
-                case 'Clouds':
-                    image.src = 'images/cloud.png';
-                    break;
-
-                case 'Haze':
-                    image.src = 'images/mist.png';
-                    break;
-
-                default:
-                    image.src = '';
-            }
-
-            temperature.innerHTML = `${parseInt(json.main.temp)}<span>°</span>`;
-            description.innerHTML = `${json.weather[0].description}`;
-            humidity.innerHTML = `${json.main.humidity}%`;
-            pressure.innerHTML = `${json.main.pressure}hPA`;
+                    
+                    case 'Clouds':
+                      image.src = 'images/cloud.png';
+                      break;
+                      
+                      case 'Haze':
+                        image.src = 'images/mist.png';
+                        break;
+                        
+                        default:
+                          image.src = '';
+                        }
+                        
+                        loctext.innerHTML = `${json.name}`;
+                        temperature.innerHTML = `${parseInt(json.main.temp)}<span>°</span>`;
+                        description.innerHTML = `${json.weather[0].description}`;
+                        humidity.innerHTML = `${json.main.humidity}%`;
+                        pressure.innerHTML = `${json.main.pressure}hPA`;
            visibility.innerHTML = `${json.visibility}м`;
             feellike.innerHTML = `${parseInt(json.main.feels_like)}<span>°</span>`;
-             sunrise.innerHTML = `${parseInt(json.sys.sunrise)}`;
-            sunset.innerHTML = `${parseInt(json.sys.sunset)}`;
+             /* sunrise.innerHTML = `${parseInt(json.sys.sunrise)}`;
+            sunset.innerHTML = `${parseInt(json.sys.sunset)}`; */
             windSpeed.innerHTML = `${parseInt(json.wind.speed)}<span class ="windSpeedtext">м/с</span>`; 
             windDeg.innerHTML = `${parseInt(json.wind.deg)}<span>°</span>`;
             windGust.innerHTML = `${parseInt(json.wind.gust)}<span class ="windSpeedtext">м/с</span>`;
-            weatherBox.style.display = '';
+         /*    weatherBox.style.display = '';
             weatherDetails.style.display = '';
             weatherBox.classList.add('fadeIn');
             weatherDetails.classList.add('fadeIn');
 
-            container.style.height = '590px';
+            container.style.height = '590px'; */
 
           }
           
@@ -386,14 +486,14 @@ search.addEventListener('click', () => {
           console.error("Помилка при запиті до OpenWeather API:", error);
         }
         
-
-
-
-
-
-
-
-
+        
+        
+        
+        
+        
+        
+        
+        
 /* MAIN END */
 
  const FindMyButton = document.querySelector(`.FindMy_btn`) 
@@ -669,3 +769,6 @@ function getWeatherForCopenhagen() {
 
 
     /*  */
+
+
+
