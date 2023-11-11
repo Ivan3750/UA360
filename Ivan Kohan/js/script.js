@@ -1,7 +1,8 @@
-const weatherblock = document.querySelector(".weather-block")
+  const weatherblock = document.querySelector(".weather-block")
 const searchButton = document.querySelector('.button-search');
 const inputCity = document.querySelector('.input__city');
 const temperatureElement = document.querySelector('.info-temperature');
+const InfoCity = document.querySelector('.info-city')
 
 
 
@@ -29,9 +30,7 @@ window.addEventListener('load', () => {
 
 
 
-
-
-
+/* 
 function getWeatherForDefaultCity() {
   const APIKey = '185dbcc57e27f9315a49d3f1c762ebd7';
 
@@ -50,7 +49,73 @@ function getWeatherForDefaultCity() {
       });
     }
     
-    getWeatherForDefaultCity();
+    getWeatherForDefaultCity(); */
+
+
+    function getCityFromCoordinates(lat, lon) {
+      const APIKey = '224370b4a84e46068c499da7f992fefb'; // Отримайте API-ключ від OpenCage Data
+      const apiUrl = `https://api.opencagedata.com/geocode/v1/json?q=${lat}+${lon}&key=${APIKey}`;
+    
+      fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+          if (data.results && data.results.length > 0) {
+            const city = data.results[0].components.city || data.results[0].components.town;
+            console.log(`Користувач знаходиться у місті: ${city}`);
+            InfoCity.textContent = `${city}` ;
+          } else {
+            console.error('Не вдалося отримати інформацію про місто.');
+          }
+        })
+        .catch(error => {
+          console.error('Помилка запиту до геокодувального сервісу: ', error);
+        });
+    }
+    
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+        getCityFromCoordinates(lat, lon);
+      }, function(error) {
+        console.error('Помилка отримання місцезнаходження: ', error);
+      });
+    } else {
+      alert("GeoLocation is not supported by your browser");
+    }
+    
+
+   function getWeatherForDefaultCity() {
+      const APIKey = '185dbcc57e27f9315a49d3f1c762ebd7';
+      
+      if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(function(position) {      
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+          console.log(lat, lon)
+          getCityFromCoordinates(lat, lon)
+          
+          fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${APIKey}&lang=uk`)        
+            .then(response => response.json())
+            .then(data => {
+              if (data.cod === 200) {
+                const temperature = data.main.temp.toFixed(0);
+                temperatureElement.textContent = `${temperature}°C`;
+              } else {
+                temperatureElement.textContent = '-';
+              }
+            })
+            .catch(error => {
+              console.error('Помилка запиту до API: ', error);
+            });
+        });
+      } else {
+        alert("GeoLocation is not supported by your browser");
+      }
+    }
+    
+    getWeatherForDefaultCity(); 
+    
     
     
     
@@ -158,7 +223,6 @@ document.getElementById("form").addEventListener("submit", function (event) {
 
 
 
-
 /* const APIKey = '185dbcc57e27f9315a49d3f1c762ebd7';
      const container = document.querySelector('.container');
 const search = document.querySelector('.button-search');
@@ -208,7 +272,7 @@ search.addEventListener('click', () => {
             const feellike = document.querySelector('.feellike');
        /*      const sunrise = document.querySelector('.sun-time');
             const sunset = document.querySelector('.moon-time'); */
-/*             const unixTimestampUTC = `${parseInt(json.sys.sunset)}`
+/*             const unixTimesRiseUTC = `${parseInt(json.sys.sunset)}`
             const windSpeed = document.querySelector(`.speed`)
             const windDeg = document.querySelector(`.deg`)
             const windGust = document.querySelector(`.gust`)
@@ -428,50 +492,88 @@ search.addEventListener('click', () => {
             const pressure = document.querySelector('.pressure');
             const visibility = document.querySelector('.visibility');
             const feellike = document.querySelector('.feellike');
-            
+            const sunrise = document.querySelector('.sun-time')
+            const sunset = document.querySelector('.moon-time')
             const windSpeed = document.querySelector(`.speed`)
             const windDeg = document.querySelector(`.deg`)
             const windGust = document.querySelector(`.gust`)
             
             
             switch (json.weather[0].main) {
-              case 'Clear':
-                image.src = 'images/clear.png';
-                break;
-                
-                case 'Rain':
-                  image.src = 'images/rain.png';
-                  break;
-                  
-                  case 'Snow':
+                    case 'Clear':
+                    image.src = 'images/clear.png';
+                    break;
+
+                    case 'Rain':
+                    image.src = 'images/rain.png';
+                    break;
+
+                    case 'Snow':
                     image.src = 'images/snow.png';
                     break;
-                    
+
                     case 'Clouds':
-                      image.src = 'images/cloud.png';
-                      break;
-                      
-                      case 'Haze':
-                        image.src = 'images/mist.png';
-                        break;
+                    image.src = 'images/cloud.png';
+                    break;
+
+                    case 'Haze':
+                    image.src = 'images/mist.png';
+                    break;
+
+                    default:
+                      image.src = '';
+                    }
                         
-                        default:
-                          image.src = '';
-                        }
-                        
-                        loctext.innerHTML = `${json.name}`;
-                        temperature.innerHTML = `${parseInt(json.main.temp)}<span>°</span>`;
-                        description.innerHTML = `${json.weather[0].description}`;
-                        humidity.innerHTML = `${json.main.humidity}%`;
-                        pressure.innerHTML = `${json.main.pressure}hPA`;
-           visibility.innerHTML = `${json.visibility}м`;
-            feellike.innerHTML = `${parseInt(json.main.feels_like)}<span>°</span>`;
-             /* sunrise.innerHTML = `${parseInt(json.sys.sunrise)}`;
-            sunset.innerHTML = `${parseInt(json.sys.sunset)}`; */
-            windSpeed.innerHTML = `${parseInt(json.wind.speed)}<span class ="windSpeedtext">м/с</span>`; 
-            windDeg.innerHTML = `${parseInt(json.wind.deg)}<span>°</span>`;
-            windGust.innerHTML = `${parseInt(json.wind.gust)}<span class ="windSpeedtext">м/с</span>`;
-         /*    weatherBox.style.display = '';
+
+              
+
+const unixTimesRise =`${json.sys.sunrise}`; // Приклад Unix timestamp
+const unixTimeSet = `${json.sys.sunset}` ;
+
+// Створення об'єкту Date на основі Unix timestamp
+const sunriseTime = new Date(unixTimesRise * 1000);
+const sunsetTime = new Date(unixTimeSet * 1000);
+
+// Отримання годин, хвилин та секунд
+const Risehours = sunriseTime.getHours();
+const Riseminutes = "0" + sunriseTime.getMinutes();
+const Sethours = sunsetTime.getHours();
+const Setminutes = "0" + sunsetTime.getMinutes();
+
+// Форматування часу
+const formattedTimeRise = Risehours + ':' + Riseminutes.substr(-2);
+const formattedTimeSet = Sethours + ':' + Setminutes.substr(-2);
+
+// Встановлення значення у вашому елементі
+sunrise.textContent = formattedTimeRise;
+sunset.textContent = formattedTimeSet;
+
+
+
+
+
+
+if (windGust < 0){
+  windGust.innerHTML = `${parseInt(json.wind.gust)}<span class ="windSpeedtext">м/с</span>`;
+  console.log(good)
+}else{
+  windGust.innerHTML = `0<span class ="windSpeedtext">м/с</span>`;
+}
+
+
+          loctext.innerHTML = `${json.name}`;
+          temperature.innerHTML = `${parseInt(json.main.temp)}<span>°</span>`;
+          description.innerHTML = `${json.weather[0].description}`;
+          humidity.innerHTML = `${json.main.humidity}%`;
+          pressure.innerHTML = `${json.main.pressure}hPA`;
+          visibility.innerHTML = `${json.visibility}м`;
+          feellike.innerHTML = `${parseInt(json.main.feels_like)}<span>°</span>`;
+          /* sunrise.innerHTML = `${parseInt(json.sys.sunrise)}`;
+          sunset.innerHTML = `${parseInt(json.sys.sunset)}`; */
+          windSpeed.innerHTML = `${parseInt(json.wind.speed)}<span class ="windSpeedtext">м/с</span>`; 
+          windDeg.innerHTML = `${parseInt(json.wind.deg)}<span>°</span>`;
+/*           windGust.innerHTML = `${parseInt(json.wind.gust)}<span class ="windSpeedtext">м/с</span>`;
+ */         /*    weatherBox.style.display = '';
             weatherDetails.style.display = '';
             weatherBox.classList.add('fadeIn');
             weatherDetails.classList.add('fadeIn');
