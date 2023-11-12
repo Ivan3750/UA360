@@ -151,7 +151,7 @@ for (let i = 0; i < countryCount; i++) {
                     DenmarkImg.src = 'images/cloud.png';
                     break;
           
-                case 'Haze':
+                case 'Mist':
                     DenmarkImg.src = 'images/mist.png';
                     break;
           
@@ -229,7 +229,7 @@ function getWeatherForCountry(countryName) {
               DenmarkImg.src = 'img/cloud.png';
               break;
     
-          case 'Haze':
+          case 'Mist':
               DenmarkImg.src = 'img/mist.png';
               break;
     

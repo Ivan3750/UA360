@@ -2137,24 +2137,13 @@ width: 100%;
    .country-link{
     display: none;
   }
- .country-link:nth-child(1){
+ .country-link{
     display: block;
   }
-  .country-link:nth-child(2){
+ 
+/*   .country-link:nth-child(13){
     display: block;
-  }
-  .country-link:nth-child(3){
-    display: block;
-  }
-  .country-link:nth-child(4){
-    display: block;
-  }
-  .country-link:nth-child(5){
-    display: block;
-  }
-  .country-link:nth-child(13){
-    display: block;
-  }
+  } */
   .country{
     gap: 8px;
     justify-content: space-around;

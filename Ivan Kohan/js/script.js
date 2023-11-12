@@ -295,7 +295,7 @@ search.addEventListener('click', () => {
                     image.src = 'images/cloud.png';
                     break;
 
-                case 'Haze':
+                case 'Mist':
                     image.src = 'images/mist.png';
                     break;
 
@@ -516,7 +516,7 @@ search.addEventListener('click', () => {
                     image.src = 'images/cloud.png';
                     break;
 
-                    case 'Haze':
+                    case 'Mist':
                     image.src = 'images/mist.png';
                     break;
 
@@ -657,6 +657,7 @@ function getWeatherForSarajevo() {
           Tbosnia.textContent = `${temperature}°`;
 
           const BosniaImg = document.querySelector("#BosniaImg")
+          console.log(data.weather[0].main)
           switch (data.weather[0].main) {
             case 'Clear':
                 BosniaImg.src = 'images/clear.png';
@@ -674,7 +675,7 @@ function getWeatherForSarajevo() {
                 BosniaImg.src = 'images/cloud.png';
                 break;
       
-            case 'Haze':
+            case 'Mist':
                 BosniaImg.src = 'images/mist.png';
                 break;
       
@@ -731,7 +732,7 @@ function getWeatherForKyiv() {
                 UkraineImg.src = 'images/cloud.png';
                 break;
       
-            case 'Haze':
+            case 'Mist':
                 UkraineImg.src = 'images/mist.png';
                 break;
       
@@ -785,7 +786,7 @@ function getWeatherForCopenhagen() {
                 DenmarkImg.src = 'images/cloud.png';
                 break;
       
-            case 'Haze':
+            case 'Mist':
                 DenmarkImg.src = 'images/mist.png';
                 break;
       
@@ -849,7 +850,7 @@ function getWeatherForCopenhagen() {
                 DenmarkImg.src = 'images/cloud.png';
                 break;
       
-            case 'Haze':
+            case 'Mist':
                 DenmarkImg.src = 'images/mist.png';
                 break;
       
